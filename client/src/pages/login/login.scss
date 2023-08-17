@@ -1,0 +1,80 @@
+.login{
+    height: 100vh;
+    background-color: #ff6b6b9e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .card{
+        width: 50%;
+        border-radius: 10px;
+        display: flex;
+        background-color: #f2f2f2;
+        min-height: 600px;
+        overflow: hidden;
+        .left{
+            // border-radius: inherit;
+            padding: 50px;
+            flex: 1;
+            background:linear-gradient(#f2f2f284,#f2f2f284 ),  url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY4MTMzMTI1Mw&ixlib=rb-4.0.3&q=80&w=1080") center ;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            color: #333333;
+            h1{
+                font-size: 100px;
+                line-height: 100px;
+            }
+            p{
+
+            }
+            span{
+                font-size: 14px;
+            }
+            button{
+                width: 50%;
+                padding: 10px;
+                color:#ff6b6bcb;
+                border: none;
+                background-color: white;
+                font-weight: bold;
+                cursor: pointer;
+                
+
+            }
+        }
+        .right{
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            justify-content: center;
+            h1{
+                
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+                input{
+                    background-color: #f2f2f2;
+                    border: none;
+                    border-bottom: 1px solid lightgray;
+                    padding: 20px 10px;
+
+                }
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    border: none;
+                    background-color: #ff6b6bcb;
+                    color: white;
+                    font-weight: bold;
+                    border-radius: 5px;
+                }
+            }
+
+        }
+    }
+}
