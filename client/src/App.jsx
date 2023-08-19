@@ -1,5 +1,5 @@
 import { Children, useState } from 'react'
-import './App.css'
+import './App.scss'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 import { createRoot } from "react-dom/client";
@@ -20,11 +20,14 @@ function App() {
   const currentUser=true;
   const Layout=()=>{
     return (
-      <div>
+      <div className='theme-light'>
         <Navbar></Navbar>
         <div style={{display:'flex'}}>
           <Leftbar />
+          <div style={{flex:6}}>
           <Outlet />
+
+          </div>
           <Rightbar />
         </div>
       </div>

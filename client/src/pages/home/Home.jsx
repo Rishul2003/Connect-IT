@@ -5,7 +5,36 @@ import './home.scss';
 const Home=function(){
     return (
         <div className="home">
-            home
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+            <h1>HOME</h1>            
+
         </div>
     )
 }
