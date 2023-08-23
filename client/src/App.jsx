@@ -1,4 +1,4 @@
-import { Children, useState } from 'react'
+
 import './App.scss'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
@@ -16,11 +16,21 @@ import Rightbar from './components/rightbar/Rightbar';
 import Leftbar from './components/leftbar/Leftbar';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile';
+import { useDarkmode } from './context/Darkmode';
+import { useEffect } from 'react';
+import { useAuthmode } from './context/Authcontext';
 function App() {
-  const currentUser=true;
+  const darkm=useDarkmode();
+  const User=useAuthmode();
+  const currentUser=User.currentuser;
+  console.log(darkm);
+  // const currentUser=true;
+  useEffect(()=>{
+    localStorage.setItem("darkmode",darkm.darkmode);
+  },[darkm.darkmode])
   const Layout=()=>{
     return (
-      <div className='theme-light'>
+      <div className={`theme-${darkm.darkmode?"dark":"light"}`}>
         <Navbar></Navbar>
         <div style={{display:'flex'}}>
           <Leftbar />

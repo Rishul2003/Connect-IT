@@ -1,0 +1,78 @@
+@import "../../App.scss";
+.post{
+    @include themify($themes){
+    background-color: themed("bg");
+    color: themed("textColor");
+    border-radius: 20px;
+    box-shadow:  0px 0px 15px 1px themed("border");
+    .container{
+        padding: 20px;
+
+    }.user{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .userinfo{
+            display:  flex;
+            gap: 20px;
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .details{
+                display: flex;
+                flex-direction: column;
+                span{
+                    &:first-child{
+                        font-weight: 500;
+                    }
+                    &:last-child{
+                        font-size: 12px;
+                        color: themed("textColorSoft");
+                    }
+                }
+            }
+        }   
+    }
+    .content{
+        margin: 20px 0px;
+        p{
+            font-size: 20px;
+        }
+        img{
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+    }
+    .info{
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+        .item{
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            .like{
+                animation: shadowAnimation 2s 2;
+            }
+        }
+    }
+}
+}
+@keyframes shadowAnimation {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px 10px rgba(255, 0, 0, 0.3);
+    }
+  }

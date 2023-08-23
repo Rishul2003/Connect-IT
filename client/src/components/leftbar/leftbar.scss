@@ -3,6 +3,9 @@
 
 .leftbar{
     @include themify($themes){
+        @include mobile {
+            display:  none;
+        }
     flex: 2;
     position: sticky;
     top: 70px;

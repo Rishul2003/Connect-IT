@@ -6,16 +6,18 @@ import gallery from "../../assets/gallery.png";
 import play from "../../assets/play.png";
 import watch from "../../assets/watch.png";
 import message from "../../assets/message.png";
+import { useAuthmode } from '../../context/Authcontext';
 
 
 const Leftbar=function(){
+    const user=useAuthmode();
     return (
         <div className="leftbar">
             <div className='container'>
                 <div className='menu'>
                     <div className='user'>
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY4MTMzMTI1Mw&ixlib=rb-4.0.3&q=80&w=1080" alt="" />
-                        <span>RISHUL ARORA</span>
+                        <img src={user.currentuser.profilepic} alt="" />
+                        <span>{user.currentuser.name}</span>
                     </div>
 
                     <div className="item">

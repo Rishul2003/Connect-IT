@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './login.scss';
+import { useAuthmode } from "../../context/Authcontext";
 
 const Login=function(){
+
+    const user=useAuthmode();
+
     return (
         <div className="login">
             <div className="card">
@@ -22,7 +26,7 @@ const Login=function(){
                         <input type="text" placeholder="EMAIL"/>
                         <input type="PASSWORD" placeholder="password" />
                         
-                        <button>LOGIN</button>
+                        <button onClick={user.login}>LOGIN</button>
                         
                     </form>
                 </div>

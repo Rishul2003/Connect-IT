@@ -2,7 +2,10 @@
 
 
 .rightbar{
-    
+    @include themify($themes){
+        @include mobile{
+            display:  none;
+        }
     flex: 3;
     position: sticky;
     top: 70px;
@@ -11,26 +14,34 @@
     &::-webkit-scrollbar{
         display:  none;
     }
+    background-color: themed("bgSoft");
+    color: themed('textColor');
     .container{
         padding: 20px;
         .item{
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 10px;
-            box-shadow:  0px 0px 15px 1px rgba(0,0,0,0.09);
+            box-shadow:  0px 0px 15px 1px themed("border");
+            background-color: themed("bg");
             span{
-                color: gray;
+                color: themed("textColor");
             }
             .user{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin: 20px 0px;
-                p{
-                    color: lightgray;
-                    font-weight: 600;
-                }
+                
                 .userinfo{
+                    p{
+                        color: themed("textColorSoft");
+                        
+                        span{
+                            color: themed("textColor");
+                            font-weight: 800;
+                        }
+                    }
                     display: flex;
                     align-items: center;
                     gap: 20px;
@@ -60,15 +71,16 @@
                     align-items: center;
                     gap: 10px;
                     button{
+                        font-weight: 800;
                         border: none;
                         padding: 5px;
-                        color: white;
+                        color: themed('textColor');
                         cursor: pointer;
                         &:first-child{
-                            background-color: blue;
+                            background-color: rgba(0, 0, 255, 0.679);
                         }
                         &:last-child{
-                            background-color: red;
+                            background-color: rgba(255, 0, 0, 0.682);
                         }
                     }
                     
@@ -77,4 +89,5 @@
         }
         
     }
+}
 }

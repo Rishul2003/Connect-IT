@@ -1,0 +1,67 @@
+@import "../../App.scss";
+
+.postimages{
+    @include mobile{
+        height: 80px;
+        justify-content: space-between;
+    }
+    display: flex;
+    gap: 10px;
+    height: 250px;
+    margin-bottom: 30px;
+    .postimage{
+        @include mobile{
+            flex: none;
+            width: 50px;
+            height: 80px;
+            // justify-content: space-between;
+            
+        }
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+        img{
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        span{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-weight: 600;
+            @include mobile{
+                display:  none;
+            }
+        }
+        button{
+            position: absolute;
+            left:10px;
+            bottom: 40px;
+            left: 10px;
+            color: white;
+            border: none;
+            height: 30px;
+            width: 30px;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color:#ff6b6bcb ;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            @include mobile{
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+            }
+
+        }
+    }
+}
