@@ -5,6 +5,10 @@
         height: 80px;
         justify-content: space-between;
     }
+    @include tablet{
+        height: 150px;
+        gap: 20px;
+    }
     display: flex;
     gap: 10px;
     height: 250px;

@@ -6,6 +6,9 @@
         @include mobile{
             display:  none;
         }
+        @include tablet{
+            display: none;
+        }
     flex: 3;
     position: sticky;
     top: 70px;

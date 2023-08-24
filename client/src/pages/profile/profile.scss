@@ -27,7 +27,20 @@
     }
     .profilecontainer{
         padding: 20px 70px;
+        @include mobile{
+            padding: 10px;
+        }
+        @include tablet{
+            padding: 20px;
+        }
         .uinfo{
+            @include mobile{
+                flex-direction: column;
+                height: 25vh;
+                padding: 20px;
+                margin-top: 100px;
+
+            }
             min-height: 180px;
             border-radius: 20px;
             background-color: themed("bg");
@@ -52,11 +65,18 @@
                 justify-content: flex-end;
                 
                 gap: 20px;
+                @include mobile{
+                    align-items: flex-end;
+                }
             }
             .centre{
+
                 span{
                     font-size: 30px;
                     font-weight: 600;
+                    @include tablet{
+                        font-size: 25px;
+                    }
                     color: themed('textColor');
                 }
                 display: flex;
