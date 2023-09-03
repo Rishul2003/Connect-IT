@@ -1,5 +1,69 @@
+@import "../../App.scss";
 .posts{
+    @include themify($themes){
+    color: themed('textColor');
     display: flex;
     flex-direction: column;
     gap: 30px;
+    .newpost{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 5px;
+
+     img{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0px 0px 2px 2px themed('border');
+
+     }   
+     input{
+        width: 100%;
+        padding: 10px;
+        border:  none;
+        font-size: 15px;
+        background: transparent;
+        outline: none;
+        color: themed('textColor');
+     }
+     
+    }
+    .below{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .file{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            label{
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                justify-content: center;
+                gap: 10px;
+                color: gray;
+            }
+            input{
+                display: none;
+            }
+
+        }
+        button{
+            border: none;
+            font-weight: bold;
+            background-color: aquamarine;
+            border: 1px solid white;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    }
+
+}
 }

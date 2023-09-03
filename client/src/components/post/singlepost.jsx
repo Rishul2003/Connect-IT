@@ -7,7 +7,34 @@ import { Link } from 'react-router-dom';
 import { red } from '@mui/material/colors';
 import Comment from '../comments/Comments';
 import { useState } from 'react';
+import { useEffect } from 'react';
 const Singlepost=function({post}){
+    // console.log("POSTS" ,post);
+    const [time,settime]=useState("");
+
+    useEffect(() => {
+        const currentTime = new Date();
+        const updatedTime = new Date(post.updatedAt);
+        const timeDifference = currentTime - updatedTime;
+        const seconds = Math.floor(timeDifference / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const weeks = Math.floor(days / 7);
+    
+        if (weeks > 0) {
+          settime(weeks + ' weeks ago');
+        } else if (days > 0) {
+          settime(days + ' days ago');
+        } else if (hours > 0) {
+          settime(hours + ' hours ago');
+        } else if (minutes > 0) {
+          settime(minutes + ' minutes ago');
+        } else {
+          settime('just now');
+        }
+      }, [post.updatedAt]);
+
     const [comment,setcomment]=useState(false);
     const like=true;
   return(
@@ -15,21 +42,22 @@ const Singlepost=function({post}){
             <div className="container">
             <div className="user">
                 <div className="userinfo">
-                    <img src={post.profilepic} alt="" />
+                    {post.user.profilepic?<img src={post.user.profilepic} alt="" />:null}
+                    
                     <div className='details'>
-                        <Link to={`/profile/${post.userid}`} style={{textDecoration:"none",color:'inherit'}}>
-                            <span>{post.name}</span>
+                        <Link to={`/profile/${post.user._id}`} style={{textDecoration:"none",color:'inherit'}}>
+                            <span>{post.user.name}</span>
                         </Link>
-                        <span>1 min ago</span>
+                        <span>{time}</span>
                     </div>
                 </div>
                 <MoreHorizIcon style={{cursor:'pointer'}}/>
             </div> 
             <div className="content">
                 <p>
-                    {post.desc}
+                    {post.content}
                 </p>
-                {post.img?<img src={post.img} ></img>:null}
+                {post.image?<img src={post.image} ></img>:null}
             </div>
             <div className="info">
                 <div className='item'>
@@ -43,7 +71,7 @@ const Singlepost=function({post}){
                     Comments
                 </div>
             </div>      
-            {comment?<Comment/>:null}  
+            {comment?<Comment comments={post.comments}/>:null}  
             </div>
         </div>
     )

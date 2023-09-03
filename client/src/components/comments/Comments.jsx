@@ -1,6 +1,7 @@
 import { useAuthmode } from '../../context/Authcontext'
 import './comment.scss'
-const Comment=function(){
+const Comment=function({comments}){
+    console.log(comments);
     const user=useAuthmode();
     const temporary=[
         {
