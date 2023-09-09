@@ -5,9 +5,10 @@ const homecontrol=require('../../controller/api/homecontrol');
 
 router.use('/user',require('./user'));
 router.use('/post',require('./post'));
-router.use('/comment',require('./comment'));
-router.use('/like',require('./like'));
+router.use('/comments',require('./comment'));
+router.use('/likes',require('./like'));
 router.use('/auth',require('./auth'));
+router.use('/friends',require('./friends'));
 
 router.get('/',function(req,res){
     return res.end("API");

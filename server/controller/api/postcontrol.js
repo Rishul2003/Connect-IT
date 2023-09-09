@@ -4,13 +4,30 @@ const Comment=require("../../models/comments");
 const jwt=require('jsonwebtoken');
 module.exports.getpost=async function(req,res){
     try{
-        console.log("HELLO")
         const tokken=req.headers.jwt;
         if(!tokken){
             return res.status(401).json("NOT LOGGED IN");
         }
         let verificate=await jwt.verify(tokken,process.env.passportjwt);
         console.log(verificate);
+        
+        if(req.query.userid){
+            console.log("HELLO")
+            console.log(req.query);
+        //     let userid=req.query.userid;
+        //     let posts=(await Post.find({user:userid}).populate('user')).populate({
+        //         path:'comments',
+        //         populate:{
+        //             path : 'user'
+        //         }
+        //     });
+        //     return res.status(200).json({
+        //     message:"List of posts",
+        //     posts:posts
+        // })
+
+        }
+        // else{
         let posts=await Post.find({}).sort('-createdAt').populate('user').populate({
             path:'comments',
             populate:{
@@ -22,6 +39,7 @@ module.exports.getpost=async function(req,res){
             posts:posts
         })
     }
+    // }
     catch(err){
         console.log(err);
         return res.status(401).json(err);

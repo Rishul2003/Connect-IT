@@ -8,7 +8,7 @@ export const usePostContext=function(){
 };
 export const PostContextProvider=function({children}){
     const [expired,setexpired]=useState(false);
-    const fetchpost=async function(){
+    const fetchpost=async function(userid){
         try{
         const response=await axios.get("http://localhost:8000/api/post",{
             headers:{

@@ -13,7 +13,7 @@ import { makerequest } from "../../Axios";
 import DoneIcon from '@mui/icons-material/Done';
 import { usePostContext } from "../../context/Postcontext"
 import { blue } from "@mui/material/colors"
-const Post=function(){
+const Post=function(postes){
     const posts=usePostContext();
     const user=useAuthmode();
     const [content,setcontent]=useState("");
@@ -39,7 +39,7 @@ const Post=function(){
                     // for (var pair of formData.entries()) {
                     //     console.log(pair[0]+ ', ' + pair[1]); 
                     // }
-                    const response=await axios.post("http://localhost:8000/api/post",formData,{
+                    const response=await axios.post(`http://localhost:8000/api/post`,formData,{
                         credentials: 'include',
                         headers: {
                             'jwt':localStorage.getItem('tokken'),

@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const friendschema=mongoose.Schema({
+const friendschema=new mongoose.Schema({
     from_user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
@@ -7,6 +7,11 @@ const friendschema=mongoose.Schema({
     to_user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
+    },
+    friend:{
+        type:Boolean,
+        require:true
+
     }
 },{
     timestamps:true

@@ -59,7 +59,12 @@ function App() {
       </div>
     )
   }
-
+  const Secondroute=({children})=>{
+    if(currentUser && !posts.expired){
+      return <Navigate to='/'/>
+    }
+    return children
+  }
   const ProtectedRoute=({children})=>{
     if(!currentUser||posts.expired){
       return <Navigate to="/login" />
@@ -81,7 +86,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />
+      element: <Secondroute><Login /></Secondroute>
     },
     {
       path: "/register",
