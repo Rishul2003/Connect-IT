@@ -12,6 +12,8 @@ import {
   Navigate,
   redirect
 } from "react-router-dom";
+
+// import Messenger from './pages/messenger/Messenger';
 import Navbar from './components/navbar/Navbar';
 import Rightbar from './components/rightbar/Rightbar';
 import Leftbar from './components/leftbar/Leftbar';
@@ -26,6 +28,7 @@ import {
   useQuery,
 } from '@tanstack/react-query'
 import { usePostContext } from './context/Postcontext';
+import Chats from './pages/chats/Chats';
 
 
 function App() {
@@ -35,11 +38,13 @@ function App() {
   const currentUser=User.currentuser;
   console.log(darkm);
   // const currentUser=true;
-  useEffect(()=> {
-    posts.fetchpost();
-    console.log(posts);
+
+  
+  // useEffect(()=> {
+  //   posts.fetchpost();
+  //   console.log(posts);
     
-  },[posts.expired])
+  // },[posts.expired])
   useEffect(()=>{
     localStorage.setItem("darkmode",darkm.darkmode);
   },[darkm.darkmode])
@@ -91,7 +96,10 @@ function App() {
     {
       path: "/register",
       element: <Register />
-    }
+    },
+    {path:"/chats",
+    element: <Chats />
+  }
   ]);
 
   return (

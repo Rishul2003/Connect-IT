@@ -25,6 +25,6 @@ export const PostContextProvider=function({children}){
     }
     const [posts,setposts]=useState(null);
     return(
-        <PostContext.Provider value={{posts,setposts,fetchpost,expired}}>{children}</PostContext.Provider>
+        <PostContext.Provider value={{posts,setposts,fetchpost,expired,setexpired}}>{children}</PostContext.Provider>
     );
 };

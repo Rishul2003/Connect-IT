@@ -13,7 +13,24 @@ import axios from 'axios';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useAuthmode } from '../../context/Authcontext';
 
-const Singlepost=function({post}){
+const Singlepost=function({post,setpost}){
+
+
+    const deletepost=async function(){
+        try{
+        const response=await axios.delete(`http://localhost:8000/api/post/${post._id}`,{
+            headers:{
+                'jwt':localStorage.getItem("tokken")
+            }
+        })
+        console.log(response);
+        setpost(prevpost=>prevpost.filter(p1=>(p1._id!=post._id)))
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
+
     const currentuser=useAuthmode();
     // console.log("POSTS" ,post);
     const [time,settime]=useState("");
@@ -56,7 +73,7 @@ const Singlepost=function({post}){
     // console.log(val);
     useEffect(() => {
         const currentTime = new Date();
-        const updatedTime = new Date(post.updatedAt);
+        const updatedTime = new Date(post.createdAt);
         const timeDifference = currentTime - updatedTime;
         const seconds = Math.floor(timeDifference / 1000);
         const minutes = Math.floor(seconds / 60);
@@ -93,7 +110,7 @@ const Singlepost=function({post}){
                         <span>{time}</span>
                     </div>
                 </div>
-                {currentuser.currentuser._id==post.user._id?<ClearIcon style={{color:"red",cursor:"pointer",backgroundColor:"black"}}/>:null}
+                {currentuser.currentuser._id==post.user._id?<ClearIcon onClick={deletepost} style={{color:"red",cursor:"pointer",backgroundColor:"black"}}/>:null}
                 
             </div> 
             <div className="content">

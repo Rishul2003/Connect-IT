@@ -7,5 +7,6 @@ const passport = require('passport');
 
 
 router.get("/",postcontrol.getpost);
+router.delete("/:id",postcontrol.destroy)
 router.post("/",upload.single('file'),postcontrol.createpost);
 module.exports=router;

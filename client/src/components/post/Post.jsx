@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './post.scss'
 import Singlepost from "./singlepost"
 import {
@@ -13,8 +13,40 @@ import { makerequest } from "../../Axios";
 import DoneIcon from '@mui/icons-material/Done';
 import { usePostContext } from "../../context/Postcontext"
 import { blue } from "@mui/material/colors"
-const Post=function(postes){
+import { useNavigate } from "react-router-dom"
+// import { fetchpost } from "../../api/post"
+const Post=function({userid}){
+
     const posts=usePostContext();
+    const navigate=useNavigate();
+    const [post,setpost]=useState(null);
+    // console.log(userid);
+    const fetchpost=async function(userid){
+        try{
+        const response=await axios.get(`http://localhost:8000/api/post?userid=${userid}`,{
+            headers:{
+                'jwt':localStorage.getItem("tokken")
+            }
+        })
+        console.log(response);
+        return response
+    
+    }
+    catch(err){
+
+        console.log(err.response.data);
+        posts.setexpired(true)
+        navigate(to='/login')
+    }
+    }
+
+    useEffect(()=>{
+       fetchpost(userid).then(
+        (response)=>(setpost(response.data.posts))
+       )
+    },[])
+
+
     const user=useAuthmode();
     const [content,setcontent]=useState("");
     const [file,setfile]=useState(null);
@@ -53,7 +85,7 @@ const Post=function(postes){
                     
                     // console.log(posts.posts)
 
-                    posts.setposts([val,...posts.posts]);
+                    setpost([val,...post]);
                     setcontent("");
                     setfile(null);
                 }
@@ -113,9 +145,9 @@ const Post=function(postes){
                     </form>
                 </div>
             </div>
-            {posts.posts&&posts.posts.map((post)=>{
+            {post&&post.map((post)=>{
                 return (
-                    <Singlepost post={post} key={post._id} />
+                    <Singlepost post={post} setpost={setpost} key={post._id} />
                 )
             })}
         </div>

@@ -13,9 +13,11 @@ import { finduser } from "../../api/user";
 import { useAuthmode } from "../../context/Authcontext";
 import { checkfriend } from "../../api/friends";
 import axios from "axios";
+import Update from "../../components/update/Update";
 
 const Profile=function(){
-
+    const [loading,isloading]=useState(false)
+    const [update,setupdate]=useState(false);
     const currentuser=useAuthmode();
     const [data,setdata]=useState(null);
     const userid=useLocation().pathname.split("/")[2];
@@ -40,17 +42,19 @@ const Profile=function(){
 
 
     useEffect(()=>{
+        isloading(true)
         finduser(userid).then(response=>(setdata(response.data.data)));
         checkfriend(input).then((response)=>(setisfriend(response.data)));
+        isloading(false)
     },[])
 
 
-
+    console.log(update);
 
     // console.log(typeof(currentuser.currentuser._id),typeof(data._id))
     return (
         
-        data===null?<h1>LOADING..</h1>:
+        data===null||loading?<h1>LOADING..</h1>:
         <div className="profile">
             <div className="images">
                 <img className="cover" src={data.coverphoto ?data.coverphoto :"https://res.cloudinary.com/deuuxuy92/image/upload/v1693894745/no-image-icon-6_pt8ewu.png"} alt="" />
@@ -67,7 +71,7 @@ const Profile=function(){
                 <div className="centre">
                     <span>{data.name}</span>
                     {data._id==currentuser.currentuser._id?
-                    <button>
+                    <button onClick={()=>(setupdate(true))}>
                         Update
                     </button>:isfriend?<button onClick={handleClick} style={{backgroundColor:"#ED0800"}}>Unfollow</button>:<button onClick={handleClick} style={{backgroundColor:"#4681f4"}}>follow</button>}
                 </div>
@@ -78,6 +82,8 @@ const Profile=function(){
                 </div>
                 <Post userid={userid}/>
             </div>
+            {update && <Update setupdate={setupdate}/>}
+        
         </div>
     )
 }

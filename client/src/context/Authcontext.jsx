@@ -23,6 +23,6 @@ export const AuthContextProvider=function({children}){
     },[currentuser])
     return (
 
-        <AuthContext.Provider value={{login,currentuser}}> {children} </ AuthContext.Provider>
+        <AuthContext.Provider value={{login,currentuser,setcurrentuser}}> {children} </ AuthContext.Provider>
     );
 };
