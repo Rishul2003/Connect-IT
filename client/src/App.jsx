@@ -64,6 +64,11 @@ function App() {
       </div>
     )
   }
+  const Cha=()=>{
+    <div className={`theme-${darkm.darkmode?"dark":"light"}`}>
+      <Outlet />  
+    </div>
+  }
   const Secondroute=({children})=>{
     if(currentUser && !posts.expired){
       return <Navigate to='/'/>
@@ -98,7 +103,7 @@ function App() {
       element: <Register />
     },
     {path:"/chats",
-    element: <Chats />
+    element: <ProtectedRoute><Chats/></ProtectedRoute>,
   }
   ]);
 

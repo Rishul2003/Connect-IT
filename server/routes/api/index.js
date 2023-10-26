@@ -9,6 +9,8 @@ router.use('/comments',require('./comment'));
 router.use('/likes',require('./like'));
 router.use('/auth',require('./auth'));
 router.use('/friends',require('./friends'));
+router.use("/conversation",require('./conversation'));
+router.use("/message",require('./message'));
 
 router.get('/',function(req,res){
     return res.end("API");

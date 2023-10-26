@@ -1,0 +1,81 @@
+@import "../../App.scss";
+
+.chats{
+
+    @include themify($themes){
+        width:98vw;
+    background-color: themed("bg");
+    height:calc(100vh - 91px);
+    // height: calc(100vh - 70px);
+    display: flex;
+    .chatmenu{
+        flex: 3.5;
+        .chatmenuwrapper{
+            height: 100%;
+            // background-color: aqua;
+            padding: 10px;
+            .chatmenuinput{
+                border: none;
+                padding: 10px 0px;
+                width: 90%;
+                border-bottom: 1px solid themed("border");
+
+            }
+        }
+
+
+    }
+    .chatbox{
+        padding: 0px 20px;
+        flex: 5.5;
+        
+        .chatboxwrapper{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            .noconversationtext{
+                position: absolute;
+                top: 10%;
+                align-self: center;
+                left: 10%;
+                font-size: 40px;
+                cursor: default;
+                color: rgb(224,220,220);
+            }
+            .chatboxtop{
+                height: 100%;
+                overflow: scroll;
+                &::-webkit-scrollbar{
+                    display:  none;
+                }
+            }
+        .chatboxbottom{
+            margin-top: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            textarea{
+                width: 80%;
+                height: 90px;
+                padding: 10px;
+
+            }
+            button{
+                width: 70px;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                background-color: teal;
+                color: white;
+            }
+        }
+    }
+    }
+    .chatonlinebox{
+        flex: 3;
+    }
+}}

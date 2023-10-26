@@ -1,0 +1,35 @@
+@import "../../App.scss";
+
+.conversation{
+    @include themify($themes){
+        display: flex;
+        margin-top: 20px;
+        align-items: center;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        img{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            object-fit:cover;
+            margin-right: 20px;
+        }
+        span{
+            color: themed("textColor");
+            font-weight: 500;
+        }
+    
+
+        
+
+
+    }
+
+}
+.conversation:hover{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    // background-color:#f2f2f2;
+    background-color: #f0f0f0;
+}

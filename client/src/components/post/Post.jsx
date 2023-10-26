@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react"
 import './post.scss'
 import Singlepost from "./singlepost"
-import {
-    QueryClient,
-    QueryClientProvider,
-    useQuery,
-  } from '@tanstack/react-query'
 import axios from "axios"
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { useAuthmode } from "../../context/Authcontext"

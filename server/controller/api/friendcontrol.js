@@ -59,3 +59,30 @@ module.exports.toggle=async function(req,res){
         return res.status(401).json(err);
     }
 }
+
+module.exports.getallfriends=async function(req,res){
+    try{
+
+    
+    const tokken=req.headers.jwt;
+        
+    if(!tokken){
+            return res.status(401).json("NOT LOGGED IN");
+        }
+        let verificate=await jwt.verify(tokken,process.env.passportjwt);
+        const userid=req.params.userid;
+        const friends=await User.findById(userid).populate({
+            path:'friends',
+            populate:{
+                path : 'user'
+            }
+        });
+        console.log(friends);
+        return res.status(200).json(friends);
+
+        }
+        catch(err){
+            return res.status(500).json(err);
+        }
+    }
+    

@@ -1,0 +1,41 @@
+@import "../../App.scss";
+.message{
+    @include themify($themes){
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        .messagetop{
+            display: flex;
+            img{
+                width: 32px;
+                height: 32px;
+                border-radius: 50% ;
+                object-fit: cover;
+                margin-right: 10px;
+            }
+            p{
+               padding: 10px;
+               color: #333;
+               border-radius: 20px;
+               background: linear-gradient(to right, #f0f0f0, #dcdcdc);               
+               max-width: 300px;
+            }
+        }
+        .messagebottom{
+            color: themed("textColor");
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+    }
+}
+.own{
+    @include themify($themes){
+    align-items: flex-end;
+    .messagetop{
+        p{
+            background: linear-gradient(to right, #61c0ff, #2189ff);
+            color: #fff
+        }
+    }
+}}
