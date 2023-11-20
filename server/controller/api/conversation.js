@@ -33,3 +33,23 @@ module.exports.newconv=async function(req,res){
         res.status(500).json(err);
     }
 }
+
+module.exports.findconv=async function(req,res){
+    try{
+        const conversation=await Conversation.findOne({
+            member:{$all:[req.params.firstuser,req.params.seconduser]}
+        })
+        if(conversation){
+            return res.status(200).json(conversation);
+        }
+        let conv=await Conversation.create({
+            member:[req.params.firstuser,req.params.seconduser]
+
+        });
+        conv.save();
+        res.status(200).json(conv);
+    }
+    catch(err){
+        res.status(500).json(err);
+    }
+}

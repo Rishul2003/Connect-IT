@@ -61,6 +61,7 @@ module.exports.toggle=async function(req,res){
 }
 
 module.exports.getallfriends=async function(req,res){
+    
     try{
 
     
@@ -70,12 +71,12 @@ module.exports.getallfriends=async function(req,res){
             return res.status(401).json("NOT LOGGED IN");
         }
         let verificate=await jwt.verify(tokken,process.env.passportjwt);
+        
         const userid=req.params.userid;
-        const friends=await User.findById(userid).populate({
-            path:'friends',
-            populate:{
-                path : 'user'
-            }
+        console.log("Firend  ",userid);
+        const friends = await User.findById(userid).populate({
+            path: 'friends',
+            select: '-password'
         });
         console.log(friends);
         return res.status(200).json(friends);
